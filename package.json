@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "gulp-vendor": "gulp vendor"
+    },
+    "devDependencies": {
+        "axios": "^0.25",
+        "browser-sync": "^2.27.10",
+        "del": "^6.1.1",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-header": "^2.0.9",
+        "gulp-plumber": "^1.2.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.1.0",
+        "gulp-uglify": "^3.0.2",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "merge-stream": "^2.0.0",
+        "postcss": "^8.1.14",
+        "startbootstrap-sb-admin-2": "^4.1.4"
+    }
+}
