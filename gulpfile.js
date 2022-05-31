@@ -10,7 +10,7 @@ const header = require("gulp-header");
 const merge = require("merge-stream");
 const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+const sass = require("gulp-sass")(require('sass'));
 const uglify = require("gulp-uglify");
 
 // Load package.json for banner
@@ -53,7 +53,7 @@ function modules() {
     .pipe(gulp.dest(BASE_DIR + '/vendor/datatables'));
   // Font Awesome
   var fontAwesome = gulp.src('./node_modules/@fortawesome/**/*')
-    .pipe(gulp.dest('./vendor'));
+    .pipe(gulp.dest(BASE_DIR + '/vendor'));
   // jQuery Easing
   var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
     .pipe(gulp.dest(BASE_DIR + '/vendor/jquery-easing'));
