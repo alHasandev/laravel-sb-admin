@@ -68,6 +68,9 @@ cd larave-sb-admin
 # Install dependencies
 composer update
 npm install
+
+# Generate js modules
+npm run dev
 ```
 
 ## Environment Settings
