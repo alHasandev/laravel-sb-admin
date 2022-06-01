@@ -7,24 +7,122 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Laravel SB Admin 2 Template
+# Laravel SB Admin Template
 
-## Installation with Laravel Sail
+> Laravel v9.15.0
 
-### Linux Terminal
+> Bootstrap 4 - SB Admin 2
+
+## Requirements
+
+-   Version Control System (VCS): [GIT](https://git-scm.com/)
+-   Project Installer, one of the following:
+    -   [Docker Desktop / Docker Compose](http://docker.com/)
+    -   [NodeJS](https://nodejs.org/), [PHP](https://www.php.net/downloads.php#v8.1.6) and [Composer](https://getcomposer.org/)
+
+## Installation
+
+### With Laravel Sail
+
+If your local machine already has [Docker](http://docker.com/) installed
+
+> Under the hood laravel sail is using docker compose
 
 ```bash
-curl -s https://laravel.build/laravel_sb_admin | bash
-cd laravel_sb_admin
+# Download official laravel installation
+curl -s https://laravel.build/laravel-sb-admin | bash
+
+# Enter working directory
+cd laravel-sb-admin
+
+# Init Git local repository
 git init
+
+# Stage Git file
 git add .
+
+# Commit laravel project
 git commit -m "install laravel --fresh"
+
+# Set remote repository as origin
 git remote add origin https://github.com/alHasandev/laravel-sb-admin.git
+
+# Fetch and merge with laravel-sb-admin template
 git pull --set-upstream -f --no-rebase --allow-unrelated-histories origin main
 git checkout --theirs .
 git add .
 git commit -m "install template:https://github.com/alHasandev/laravel-sb-admin.git"
 ```
+
+### With NodeJS, PHP and Composer
+
+If your local machine already has [NodeJS](https://nodejs.org/), [PHP](https://www.php.net/downloads.php#v8.1.6) and [Composer](https://getcomposer.org/) installed
+
+```bash
+# Clone Repository
+git clone https://github.com/alHasandev/laravel-sb-admin.git
+
+# Enter working directory
+cd larave-sb-admin
+
+# Install dependencies
+composer update
+npm install
+```
+
+## Environment Settings
+
+Before you start developing make sure you have `.env` file on your project directory root
+
+If you are using [Docker](http://docker.com/) in development you can simply rename `.env.sail` file to `.env`
+
+Otherwise you can use `.env.example` file and rename it to `.env`
+
+Adjust `.env` settings to your project preferences
+
+## Development
+
+### With Laravel Sail
+
+```bash
+# On your project root directory
+./vendor/bin/sail up
+```
+
+```bash
+# Or running sail with detached mode
+./vendor/bin/sail up -d
+```
+
+After sail up and running, run the following command on current terminal (if you using -d (detached) flag) or other terminal to generate js modules
+
+```bash
+# Install package dependencies
+sail npm install
+```
+
+```bash
+# Generate js modules
+sail npm run dev
+```
+
+### With Laravel PHP Artisan
+
+Before you can run php artisan, you must generate a key
+
+```bash
+# On your project root directory
+php artisan key:generate
+```
+
+And run the local development server:
+
+```bash
+# On your project root directory
+php artisan serve
+```
+
+If above instructions success now you can start view your web on browser `http://localhost:8000` (based on your .env setting)
 
 ## About Laravel
 
