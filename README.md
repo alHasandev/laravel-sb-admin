@@ -29,29 +29,24 @@ If your local machine already has [Docker](http://docker.com/) installed
 > Under the hood laravel sail is using docker compose
 
 ```bash
-# Download official laravel installation
-curl -s https://laravel.build/laravel-sb-admin | bash
+# Clone repository 
+git clone https://github.com/alHasandev/laravel-sb-admin.git
 
 # Enter working directory
-cd laravel-sb-admin
+cd larave-sb-admin
 
-# Init Git local repository
-git init
+# Install dependencies using docker 
+# / make sure you set file permission to executable 
+./docking composer composer install
+```
 
-# Stage Git file
-git add .
+Optional: set sail alias to bashrc or zshrc config file
+```bash
+./save-alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
 
-# Commit laravel project
-git commit -m "install laravel --fresh"
-
-# Set remote repository as origin
-git remote add origin https://github.com/alHasandev/laravel-sb-admin.git
-
-# Fetch and merge with laravel-sb-admin template
-git pull --set-upstream -f --no-rebase --allow-unrelated-histories origin main
-git checkout --theirs .
-git add .
-git commit -m "install template:https://github.com/alHasandev/laravel-sb-admin.git"
+#or if you using zsh
+zsh ./save-alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
+source ~/.zshrc
 ```
 
 ### With NodeJS, PHP and Composer

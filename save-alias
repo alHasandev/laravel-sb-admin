@@ -1,0 +1,32 @@
+#!/bin/bash
+if [ -f $HOME/.zshrc ]; then
+CONFIG_PATH=$HOME/.zshrc
+else 
+CONFIG_PATH=$HOME/.bashrc
+fi
+
+ALIAS_NAME=`echo "$1" | grep -o ".*="`
+
+
+  # Checking whether the alias name is empty. 
+  # Otherwise sed command later will match and delete every alias in the file
+if [ -z "$ALIAS_NAME" ]; then
+  echo 'USAGE: save-alias alias_name="command" ' 1>&2
+  echo '       save-alias hello="echo hello world" \n' 1>&2
+  echo "Wrong format. Exiting..." 1>&2
+  exit 1
+fi
+
+# Deleting dublicate aliases
+sed -i "/alias $ALIAS_NAME/d" $CONFIG_PATH
+
+# Quoting command: my-alias=command -> my-alias="command"
+QUOTED=`echo "$1"\" | sed "s/$ALIAS_NAME/$ALIAS_NAME\"/g"`
+
+# Appending the command to the config (end file)
+echo "alias $QUOTED" >> $CONFIG_PATH
+
+#reloading config file.
+source $CONFIG_PATH
+# instead of reloading the whole config you might want to append
+# to a new file as well, then source it and then rm new file
